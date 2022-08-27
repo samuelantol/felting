@@ -1,0 +1,28 @@
+{
+  "name": "first-vue",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "@svgdotjs/svg.js": "^3.1.2",
+    "fabric": "^5.2.1",
+    "file-saver": "^2.0.5",
+    "p5": "^1.4.2",
+    "paper": "^0.12.15",
+    "pinia": "^2.0.14",
+    "requirejs": "^2.3.6",
+    "svg-path-to-polygons": "^0.1.0",
+    "vue": "^3.2.37",
+    "vue-inline-svg": "^2.1.0",
+    "vue-input-autowidth": "^1.0.11",
+    "vue-simple-svg": "^2.0.2",
+    "vue-svg-inline-plugin": "^2.2.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "vite": "^2.9.12"
+  }
+}
