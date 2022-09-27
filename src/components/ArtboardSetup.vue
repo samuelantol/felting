@@ -2,17 +2,21 @@
     <div class="setup">
         <div class="universal-group">
             <h2>Canvas size</h2>
-            <div>
+            <div class="small-group">
                 <span>width</span>
                 <span class="x">→</span>
-                <input :size="inputWidth.x" @keyup="resizeX" v-model="mainStore.canvasSize.x">
-                <span>cm</span>
+                <div class="input" :class="{ focus: focusElement === 1 }">
+                    <input @focus="focusElement = 1" @blur="focusElement = 0" v-model="mainStore.canvasSize.x">
+                    <span>cm</span>
+                </div>
             </div>
-            <div>
+            <div class="small-group">
                 <span>height</span>
                 <span class="x">→</span>
-                <input :size="inputWidth.y" @keyup="resizeY" v-model="mainStore.canvasSize.y">
-                <span>cm</span>
+                <div class="input" :class="{ focus: focusElement === 2 }">
+                    <input @focus="focusElement = 2" @blur="focusElement = 0" v-model="mainStore.canvasSize.y">
+                    <span>cm</span>
+                </div>
             </div>
         </div>
         <button @click="createArtboard">create</button>
@@ -21,36 +25,12 @@
 
 
 <script setup>
-    import { reactive } from 'vue'
+    import { ref } from 'vue'
     import { useMainStore } from '../stores/MainStore'
     
     const mainStore = useMainStore()
 
-    const inputWidth = reactive({ x:2, y:2 })
-
-    function resizeX() {
-        if (mainStore.canvasSize.x < 100) {
-            inputWidth.x = 1
-        } else if (mainStore.canvasSize.x < 1000) {
-            inputWidth.x = 2
-        } else if (mainStore.canvasSize.x < 10000) {
-            inputWidth.x = 3
-        } else {
-            inputWidth.x = 4
-        }
-    }
-
-    function resizeY() {
-        if (mainStore.canvasSize.y < 100) {
-            inputWidth.y = 1
-        } else if (mainStore.canvasSize.y < 1000) {
-            inputWidth.y = 2
-        } else if (mainStore.canvasSize.y < 10000) {
-            inputWidth.y = 3
-        } else {
-            inputWidth.y = 4
-        }
-    }
+    const focusElement = ref(0);
 
     function createArtboard() {
         mainStore.phase = 1
@@ -67,7 +47,10 @@
         transform: translate(-50%, -50%);
     }
     .x {
-        margin-left: 14px;
-        margin-right: 14px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .size-group{
+        margin-bottom: 4px;
     }
 </style>

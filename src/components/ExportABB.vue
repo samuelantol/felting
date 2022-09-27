@@ -1,21 +1,10 @@
 <template>
     <div class="universal-group">
-        <div v-if="mainStore.phase<1">
-            <div>
-            <button disabled>save</button>
-            </div>
-            <div>
-                <button disabled>export →</button>
-            </div>
+        <div>
+            <button :disabled="mainStore.phase<1">save</button>
         </div>
-
-        <div v-else>
-            <div>
-            <button>save</button>
-            </div>
-            <div>
-                <button @click="exportFile" >export →</button>
-            </div>
+        <div>
+            <button @click="exportFile" :disabled="mainStore.phase<1">export →</button>
         </div>
     </div>
 </template>
@@ -29,7 +18,7 @@
     const settingsStore = useSettingsStore(); 
 
     let rescale = 0.3521/1000;
-    let approach = 0.1;
+    let approach = 0.05;
     let postScaler = 1000;
 
     function exportFile() {

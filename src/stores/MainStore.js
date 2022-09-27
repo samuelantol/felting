@@ -10,6 +10,7 @@ export const useMainStore = defineStore('MainStore', {
             reload: 0,
 
             svgLink: null,
+            pngLink: null,
 
             canvasSize: { x: 100, y: 100 },
             artboardSize: { x: 500, y: 500 },

@@ -1,19 +1,13 @@
 <template>
     <div class="universal-group">
-        <div v-if="mainStore.phase < 5">
-            <h2 class="disabled" >Speed of motor</h2>
-            <button class="minus" @click="minus" disabled >−</button>
-            <input :size="inputWidth" @keyup="resize" v-model="number" disabled >
-            <span class="disabled" >turns/sec</span>
-            <button class="plus" @click="plus" disabled >+</button>
-        </div>
-
-        <div v-else>
-            <h2>Speed of motor</h2>
-            <button class="minus" @click="minus">−</button>
-            <input :size="inputWidth" @keyup="resize" v-model="number">
-            <span>turns/sec</span>
-            <button class="plus" @click="plus">+</button>
+        <h2 :class="{ disabled: mainStore.phase<5}">Motor speed</h2>
+        <div class="small-group" :class="{ disabled: mainStore.phase<5}">
+            <button class="minus" @click.stop="minus" :disabled="mainStore.phase<5">−</button>
+            <div class="input" :class="{ disabled: mainStore.phase<5, focus: focusElement === true }">
+                <input :size="inputWidth" @mousedown.stop @focus="focusElement = true" @blur="focusElement = false" v-model="number" :disabled="mainStore.phase<5">
+                <span class="unit">turns/sec</span>
+            </div>
+            <button class="plus" @click.stop="plus" :disabled="mainStore.phase<5">+</button>
         </div>
     </div>
 </template>
@@ -25,29 +19,15 @@
     
     const mainStore = useMainStore()
 
-    const number = ref(200)
+    const number = ref(12.5)
     const inputWidth = ref(2)
 
     function minus() {
         number.value--
-        resize()
     }
 
     function plus() {
         number.value++
-        resize()
-    }
-
-    function resize() {
-        if (number.value < 100) {
-            inputWidth.value = 1
-        } else if (number.value < 1000) {
-            inputWidth.value = 2
-        } else if (number.value < 10000) {
-            inputWidth.value = 3
-        } else {
-            inputWidth.value = 4
-        }
     }
 </script>
 
