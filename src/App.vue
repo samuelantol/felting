@@ -55,12 +55,15 @@
 </template>
 
 <style>
-    body { background-color: rgb(230, 230, 230, 1); }
+    body {
+        background-color: rgb(230, 230, 230, 1);
+        margin-top: 0;
+    }
+
     @font-face {
         font-family: 'Handjet';
         src: url('./assets/fonts/Handjet-VF.ttf');
     }
-
     @font-face {
         font-family: 'Jakarta';
         src: url('./assets/fonts/PlusJakartaSans-VariableFont_wght.ttf');
@@ -138,7 +141,7 @@
         margin: 0px;
         padding: 4px;
     }
-    .gradient-start-end {
+    .input-title {
         margin-right: 12px;
     }
 

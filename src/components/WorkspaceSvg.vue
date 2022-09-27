@@ -31,7 +31,7 @@
         }
         else if (obj.type === "line") {
             // create points (=steps) between start and end point of line
-            let samples = polygonLength([[obj.x1, obj.y1], [obj.x2, obj.y2]]) / STEP;
+            let samples = Math.round(polygonLength([[obj.x1, obj.y1], [obj.x2, obj.y2]]) / STEP);
             let points = sampledLine([obj.x1, obj.y1], [obj.x2, obj.y2], samples)
             mainStore.rawPaths.push(points);
         }
@@ -39,7 +39,7 @@
             let points = [];
             for (let i = 0; i < obj.points.length-1; i++) {
                 // create points (=steps) between start and end point of each line in polyline
-                let samples = polygonLength([[obj.points[i].x, obj.points[i].y], [obj.points[i+1].x, obj.points[i+1].y]]) / STEP;
+                let samples = Math.round(polygonLength([[obj.points[i].x, obj.points[i].y], [obj.points[i+1].x, obj.points[i+1].y]]) / STEP);
                 let linePoints = sampledLine([obj.points[i].x, obj.points[i].y], [obj.points[i+1].x, obj.points[i+1].y], samples) // with steps
                 points = points.concat(linePoints);
             }
@@ -48,12 +48,12 @@
         else if (obj.type === "polygon") {
             let points = [];
             for (let i = 0; i < obj.points.length-1; i++) {
-                let samples = polygonLength([[obj.points[i].x, obj.points[i].y], [obj.points[i+1].x, obj.points[i+1].y]]) / STEP;
+                let samples = Math.round(polygonLength([[obj.points[i].x, obj.points[i].y], [obj.points[i+1].x, obj.points[i+1].y]]) / STEP);
                 let linePoints = sampledLine([obj.points[i].x, obj.points[i].y], [obj.points[i+1].x, obj.points[i+1].y], samples) // with steps
                 points = points.concat(linePoints);
             }
             // closing the shape - connecting last point and first point (difference between polygon and polyline)
-            let samples = polygonLength([[obj.points[obj.points.length-1].x, obj.points[obj.points.length-1].y], [obj.points[0].x, obj.points[0].y]]) / STEP;
+            let samples = Math.round(polygonLength([[obj.points[obj.points.length-1].x, obj.points[obj.points.length-1].y], [obj.points[0].x, obj.points[0].y]]) / STEP);
             let linePoints = sampledLine([obj.points[obj.points.length-1].x, obj.points[obj.points.length-1].y], [obj.points[0].x, obj.points[0].y], samples) // with steps
             points = points.concat(linePoints);
             mainStore.rawPaths.push(points);
@@ -99,7 +99,7 @@
             let points = [];
             for (let i = 0; i < originalPoints.length-1; i++) {
                 // create points (=steps) between start and end point of each line in polyline
-                let samples = polygonLength([originalPoints[i], originalPoints[i+1]]) / STEP;
+                let samples = Math.round(polygonLength([originalPoints[i], originalPoints[i+1]]) / STEP);
                 let linePoints = sampledLine(originalPoints[i], originalPoints[i+1], samples) // with steps
                 points = points.concat(linePoints);
             }
@@ -126,11 +126,11 @@
     }
 
     // CREATES POINTS INSIDE OF LINE (without this, gradients on lines, rectangles, polylines and polygons wouldn't work)
-    function sampledLine(a,b,samples){
-        var stepX = adjustStep((b[0] - a[0]) / samples, b[0] - a[0]);
-        var stepY = adjustStep((b[1] - a[1]) / samples, b[1] - a[1]);
+    function sampledLine(a,b,samples) {
+        var stepX = (b[0] - a[0]) / samples;
+        var stepY = (b[1] - a[1]) / samples;
         var points = [];
-        for (var i = 0; i < samples; i ++) {
+        for (var i = 0; i < samples+1; i ++) { // samples+1 -> because number of points = number of samples+1
             points.push([a[0]+stepX*i, a[1]+stepY*i]);
         }
         return points;

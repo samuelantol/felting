@@ -18,7 +18,6 @@ export const useMainStore = defineStore('MainStore', {
 
             pathNames: [],
             rawPaths: [],
-            paperPaths: [],
             selectedPaths: []
         };
     }

@@ -7,7 +7,7 @@ export const useSettingsStore = defineStore('SettingsStore', {
     state: () => {
         return {
             pathSettings: [],
-            layerSettings: { needlePattern: 0, wool: 0, motorSpeed: 200 },
+            layerSettings: { needlePattern: 0, wool: 0, motorSpeed: 12.5 }, 
             change: 0,
 
             gradient: false,

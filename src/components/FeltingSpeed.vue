@@ -17,7 +17,7 @@
         </div>
         <!-- GRADIENT SPEED -->
         <div v-if="settingsStore.gradient" class="small-group" :class="{ disabled: mainStore.phase<2 }">
-            <span class="gradient-start-end">start</span>
+            <span class="input-title">start</span>
             <button class="minus" @click.stop="minus('start')" :disabled="mainStore.phase<2">−</button>
             <div class="input" :class="{ disabled: mainStore.phase<2, focus: focusElement === 1 }">
                 <input :size="inputWidthStart" @mousedown.stop @keyup="changeValue" @focus="focusElement = 1" @blur="focusElement = 0" v-model="settingsStore.speedStart" :disabled="mainStore.phase<2">
@@ -26,7 +26,7 @@
             <button class="plus" @click.stop="plus('start')" :disabled="mainStore.phase<2">+</button>
         </div>
         <div v-if="settingsStore.gradient" class="small-group" :class="{ disabled: mainStore.phase<2 }">
-            <span class="gradient-start-end">end</span>
+            <span class="input-title">end</span>
             <button class="minus" @click.stop="minus('end')" :disabled="mainStore.phase<2">−</button>
             <div class="input" :class="{ disabled: mainStore.phase<2, focus: focusElement === 2 }">
                 <input :size="inputWidthEnd" @mousedown.stop @keyup="changeValue" @focus="focusElement = 2" @blur="focusElement = 0" v-model="settingsStore.speedEnd" :disabled="mainStore.phase<2">

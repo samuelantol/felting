@@ -5,7 +5,7 @@
             <button class="minus" @click.stop="minus" :disabled="mainStore.phase<5">−</button>
             <div class="input" :class="{ disabled: mainStore.phase<5, focus: focusElement === true }">
                 <input :size="inputWidth" @mousedown.stop @focus="focusElement = true" @blur="focusElement = false" v-model="number" :disabled="mainStore.phase<5">
-                <span class="unit">mm</span>
+                <span class="unit">cm</span>
             </div>
             <button class="plus" @click.stop="plus" :disabled="mainStore.phase<5">+</button>
         </div>
@@ -19,7 +19,7 @@
 
     const mainStore = useMainStore()
 
-    const number = ref(200)
+    const number = ref(0)
     const focusElement = ref(false)
 
     function minus() {

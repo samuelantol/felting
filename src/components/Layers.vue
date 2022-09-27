@@ -169,7 +169,7 @@
         settingsStore.change++;
     }
 
-    // deselect by clicking outside, not working very well
+    // deselect by clicking outside, not working very well yet
 
     // onBeforeUnmount(() => {
     //   document.removeEventListener('mousedown', deselect);
@@ -183,9 +183,7 @@
 
 <style>
     .file-reader {
-        position: relative;
-        overflow: hidden;
-        display: inline-block;
+        width: fit-content;
         cursor: pointer;
         font-family: Jakarta;
         font-size: 18px;
@@ -194,7 +192,7 @@
 	    border: 2px solid  rgb(255, 255, 255, 0);;
         border-radius: 8px;
 	    padding: 4px 10px;
-        margin: 4px 0px 0px 0px;
+        margin: 0px 0px 4px 0px;
     }
     .file-reader:hover {
         border: 2px solid rgb(255, 255, 255, 1);

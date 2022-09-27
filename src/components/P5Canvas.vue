@@ -108,6 +108,10 @@
         margin: 0 auto;
         padding: 0;
         overflow: hidden;
+        border-radius: 8px;
+    }
+    canvas {
+        border-radius: 8px;
     }
 </style>
   

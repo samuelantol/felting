@@ -20,7 +20,7 @@
     const mainStore = useMainStore()
 
     const active = ref(false)
-    const selected = ref(1)
+    const selected = ref(0)
 
     let id = 0
     const options = ref([
