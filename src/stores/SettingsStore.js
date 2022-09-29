@@ -16,11 +16,11 @@ export const useSettingsStore = defineStore('SettingsStore', {
             
             needlePatternP5: [
                 { id: 0,    text: "circular – 0.7 cm",      width: 0.7,   pattern: 0}, // pattern: 0 = circle, 1 = line
-                { id: 1,    text: "circular – 3 cm",      width: 3,   pattern: 0}, 
+                { id: 1,    text: "circular – 3.5 cm",      width: 3.5,   pattern: 0}, 
                 { id: 2,    text: "circular – 5 cm",      width: 4,   pattern: 0},
                 { id: 3,    text: "line – 3 cm",          width: 3,   pattern: 1},
                 { id: 4,    text: "line – 5 cm",          width: 5,   pattern: 1},
-                { id: 5,    text: "3 needles in a row",   width: 1,   pattern: 1},
+                { id: 5,    text: "x – 3.5 cm",   width: 3.5,   pattern: 2},
                 { id: 6,    text: "1 needle",             width: 0.1,    pattern: 0},
             ],
             wool: [

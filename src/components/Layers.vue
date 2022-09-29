@@ -3,12 +3,8 @@
         <div class="universal-group">
             <h2 :class="{ disabled: mainStore.phase<1 }">File</h2>
             <label class="file-reader" :class="{ disabled: mainStore.phase<1 }">
-                upload svg
+                upload svg/png
                 <input type="file" @change="loadFile" />
-            </label>
-            <label class="file-reader" :class="{ disabled: mainStore.phase<1 }">
-                upload png
-                <input type="file" @change="loadFilePng" />
             </label>
         </div>
     </div>
@@ -32,12 +28,8 @@
         </div>
         <div class="universal-group">
             <label class="file-reader">
-                replace with svg
+                replace svg/png
                 <input type="file" @change="reload" />
-            </label>
-            <label class="file-reader">
-                replace with png
-                <input type="file" @change="reloadPng" />
             </label>
         </div>
     </div>
@@ -45,7 +37,7 @@
 
 
 <script setup>
-    import { ref, onBeforeUnmount, onMounted } from 'vue'
+    import { ref } from 'vue'
     import { useMainStore } from '../stores/MainStore'
     import { useSettingsStore } from '../stores/SettingsStore'
 
@@ -57,7 +49,7 @@
     const file = ref(null);
 
     let idLayer = 0;
-    const layers = ref([ // NOT WORKING ... more imported SVGs, it's also implemented in <template>
+    const layers = ref([ // more imported SVGs – it's implemented in <template> – but not used yet
         {id: idLayer++, text: 'layer.svg', paths: mainStore.paths}
     ])
 
@@ -66,8 +58,8 @@
     }
 
     function loadFile(ev) {
-        file.value = ev.target.files[0]
-        const reader = new FileReader()
+        file.value = ev.target.files[0];
+        const reader = new FileReader();
 
         if (file.value.name.includes(".svg")) {
             reader.readAsText(file.value);
@@ -77,15 +69,8 @@
 
             loaded.value = true;
         }
-    }
-
-    function loadFilePng(ev) {
-        file.value = ev.target.files[0]
-        const reader = new FileReader()
 
         if (file.value.name.includes(".png")) {
-            //reader.readAsText(file.value);
-
             mainStore.pngLink = URL.createObjectURL(file.value);        //save URL to store
             mainStore.phase = 3;
 
@@ -101,18 +86,6 @@
         mainStore.pngLink = null;
 
         loadFile(ev);
-
-        mainStore.reload ++;
-    }
-
-    function reloadPng(ev) {
-        mainStore.rawPaths = [];
-        settingsStore.pathSettings = [];
-        mainStore.pathNames = [];
-        mainStore.svgLink = null;
-        mainStore.pngLink = null;
-
-        loadFilePng(ev);
 
         mainStore.reload ++;
     }
@@ -142,7 +115,7 @@
             settingsStore.speedEnd = settingsStore.pathSettings[id].speedEnd;
         }
 
-        // MULTIPLE SELECTION NOT USED, but it's ready
+        // MULTIPLE SELECTION – not used, but it's ready
 
         // if (!already) {
         //     mainStore.selectedPaths.push(id);
@@ -169,7 +142,7 @@
         settingsStore.change++;
     }
 
-    // deselect by clicking outside, not working very well yet
+    // DESELECT BY CLICKING ANYWHERE, not working very well yet
 
     // onBeforeUnmount(() => {
     //   document.removeEventListener('mousedown', deselect);

@@ -34,20 +34,6 @@
             mainStore.artboardSize.y = artboardWidth;
             mainStore.artboardSize.x = mainStore.canvasSize.x * helpSize;
         }
-
-        // // previous way using vh -> changing when the height of window changes
-
-        //:style="{ width: mainStore.artboardSize.x + 'vh', height: mainStore.artboardSize.y + 'vh' }"
-        //
-        // if (mainStore.canvasSize.x > mainStore.canvasSize.y ) {
-        //     let helpSize = 90 / mainStore.canvasSize.x;
-        //     mainStore.artboardSize.x = 90;
-        //     mainStore.artboardSize.y = mainStore.canvasSize.y * helpSize;
-        // } else {
-        //     let helpSize = 80 / mainStore.canvasSize.y;
-        //     mainStore.artboardSize.y = 80;
-        //     mainStore.artboardSize.x = mainStore.canvasSize.x * helpSize;
-        // }
     })
 </script>
 

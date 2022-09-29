@@ -62,6 +62,9 @@
                             p5.ellipse(x, y, width, width);
                         } else if (pattern === 1) {
                             p5.rect(x-width/2, y-width/8, width, width/4, width/8)
+                        } else if (pattern === 2) {
+                            //rotate - create X - to do
+                            p5.rect(x-width/2, y-width/8, width, width/4, width/8);
                         }
 
                         color += colorStep;
@@ -100,8 +103,6 @@
     }
 </script>
 
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
     #p5Canvas {
         display: block;

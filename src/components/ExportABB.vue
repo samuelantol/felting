@@ -22,8 +22,6 @@
     let postScaler = 1000;
 
     function exportFile() {
-        //let fso = CreateObject("Scripting.FileSystemObject");
-        //let file = fso.CreateTextFile("../export.prg", True);
         var lines = "";
 
         let rapidSpeed = "[ 200, 500, 5000, 1000 ]";

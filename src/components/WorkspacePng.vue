@@ -25,8 +25,8 @@
             let img;
 
             //resolution of felted image
-            let sizeX = 18;
-            let sizeY = 18;
+            let sizeX = 20;
+            let sizeY = 20;
 
             // size of pixel = length of line: width of needle pattern should be the same as length of line (square)
             let pixelSize = cmToPx( 3 ); //cm
@@ -38,11 +38,6 @@
             
             // SET UP
             p5.setup = _ => {
-                //var canvas = p5.createCanvas(mainStore.artboardSize.x, mainStore.artboardSize.y);
-                //canvas.parent("p5Canvas");
-
-                //p5.background(255);
-
                 p5.noStroke();
                 
                 // round down steps
@@ -58,16 +53,10 @@
                     for (let j = 0; j < sizeY; j++) {
 
                         let c = img.get(i*stepX, j*stepY);
-                        let b = p5.brightness(c)/2 + 5; // brightness maximum is 100, felting speed maximum can be 50, minimum 10
+                        let b = p5.brightness(c)/2 + 5; // brightness maximum is 100 -> felting speed maximum can be 55(=100/2+5), minimum 5(=0+5)
                         brights.push(b);
-
-                        // p5.fill(b);
-                        // p5.rect(i*50, j*50, 50, 50);
                     }
                 }
-                
-                let w = mainStore.artboardSize.x/sizeX;
-                let h = mainStore.artboardSize.y/sizeY;
 
                 let idPath = 0;
 
@@ -84,8 +73,6 @@
                             mainStore.pathNames.push({id: idPath, type: 'pixel'});
 
                             settingsStore.layerSettings.needlePattern = 4;
-
-                            //p5.rect(i*w, j*h, w, h);
 
                             idPath++;
                         }

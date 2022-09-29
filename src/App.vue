@@ -105,6 +105,13 @@
         text-align: left;
         margin-top: 32px;
         margin-left: 32px;
+        max-height: 96vh;
+        overflow: auto;
+        -ms-overflow-style: none;  /* hide scrollbar IE and Edge */
+        scrollbar-width: none;  /* hide scrollbar Firefox */
+    }
+    .layers::-webkit-scrollbar {
+        display: none;
     }
     .layersGroup {
         margin-bottom: 32px;
@@ -118,6 +125,13 @@
         text-align: right;
         top: 0%;
         right: 0%;
+        max-height: 96vh;
+        overflow: auto;
+        -ms-overflow-style: none;  /* hide scrollbar IE and Edge */
+        scrollbar-width: none;  /* hide scrollbar Firefox */
+    }
+    .settings::-webkit-scrollbar {
+        display: none;
     }
     .settingsGroup {
         margin-bottom: 32px;

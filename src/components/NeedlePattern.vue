@@ -24,12 +24,6 @@
     const active = ref(false);
     const selected = ref(settingsStore.layerSettings.needlePattern);
 
-    // THIS FUNCTION CONVERTS CM TO PX IN 72 DPI
-    function cmToPx(cm) {
-        let px = (72 * cm) / 2.54
-        return px;
-    }
-
     function open() {
         active.value = true;
     }
@@ -41,11 +35,6 @@
     function select(selectedId) {
         selected.value = selectedId;
         settingsStore.layerSettings.needlePattern = selectedId;
-        // for (let i = 0; i < mainStore.paperPaths.length; i++) {
-        //     mainStore.paperPaths[i].strokeWidth = cmToPx( settingsStore.needlePattern[settingsStore.layerSettings.needlePattern].width) * mainStore.scaleView;
-        //     mainStore.paperPaths[i].strokeCap = settingsStore.needlePattern[settingsStore.layerSettings.needlePattern].cap;
-        //     mainStore.paperPaths[i].strokeJoin = settingsStore.needlePattern[settingsStore.layerSettings.needlePattern].join;
-        // }
         settingsStore.change++;
         active.value = false;
     }
